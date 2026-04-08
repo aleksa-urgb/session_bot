@@ -17,14 +17,18 @@ ADMIN_IDS = [1314664080]  # Ganti dengan Telegram user ID kamu
 # ============================
 # 🗄️ KONFIGURASI MYSQL
 # ============================
-DB_HOST = "localhost"
-DB_PORT = 3306
-DB_USER = "botuser"
-DB_PASSWORD = "Aleksa_1512"
-DB_NAME = "rekap_setoran"
-DB_UNIX_SOCKET = (
-    "/var/run/mysqld/mysqld.sock"  # Untuk Ubuntu/Linux (hapus jika Windows)
+import os
+
+DB_HOST = os.environ.get("DB_HOST", "localhost")
+DB_PORT = int(os.environ.get("DB_PORT", 3306))
+DB_USER = os.environ.get("DB_USER", "bot_user")
+DB_PASSWORD = os.environ.get("DB_PASSWORD", "Aleksa_1512")
+DB_NAME = os.environ.get("DB_NAME", "rekap_setoran")
+BOT_TOKEN = os.environ.get(
+    "BOT_TOKEN", "8747446983:AAFE3GZ7mliq7fCPbbSLdZhLyA0rv2thWmk"
 )
+ADMIN_IDS = [int(x) for x in os.environ.get("ADMIN_IDS", "1314664080").split(",")]
+
 
 # ============================
 # 📁 FILE OUTPUT
